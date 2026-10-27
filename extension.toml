@@ -1,6 +1,6 @@
-id = "shire"
+id = "shire-theme"
 name = "Shire"
-description = "Shire — a warm, earthy dark theme inspired by Fields of the Shire."
+description = "Shire — warm, earthy dark and light themes for Zed, inspired by Fields of the Shire."
 version = "0.1.0"
 schema_version = 1
 authors = ["Valery Murashko"]

@@ -1,8 +1,8 @@
 # Shire — a Zed theme
 
-A dark, warm, earthy theme for [Zed](https://zed.dev), ported from OpenChamber's
-**Fields of the Shire** (dark): the same burnt-umber background, sage-green accent,
-clay-orange numbers and slate-blue keywords.
+A warm, earthy theme family for [Zed](https://zed.dev), adapted from OpenChamber's
+**Fields of the Shire**: the same burnt-umber background and sage-green accent on the
+dark side, warm paper and forest green on the light side.
 
 - Theme family: **Shire**
 - Variants: **Shire Dark** and **Shire Light** (`appearance: "dark"` / `"light"`)
@@ -17,7 +17,8 @@ shire/
 ├── src/shire.rs            # no-op Extension impl
 ├── themes/shire.json       # ← the theme itself: one family, dark + light
 ├── scripts/check-theme.ps1 # JSON + hex-color sanity check
-├── LICENSE
+├── LICENSE                 # MIT, for this project's code and theme JSON
+├── THIRD_PARTY_NOTICES.md  # OpenChamber MIT notice for the derived palette
 └── README.md
 ```
 
@@ -125,19 +126,28 @@ A third variant (for example a blurred "Shire Soft") is just another object in t
 
 ## Promoting to the extension registry (optional)
 
-1. Create a public repo from this folder and uncomment `repository` in `extension.toml`
-   (replace the placeholder).
+1. Create a public repo from this folder; `repository` in `extension.toml` already
+   points at it. The extension ID is `shire-theme` — Zed's publishing prerequisites
+   require a theme-only extension to be suffixed with `-theme`, and the ID may not
+   contain `zed` or `extension`.
 2. Fork [`zed-industries/extensions`](https://github.com/zed-industries/extensions),
-   add your repo as a submodule under `extensions/shire`, and add a matching entry to
-   `extensions.toml`:
+   add your repo as a submodule under `extensions/shire-theme`, and add a matching
+   entry to `extensions.toml`:
 
    ```toml
-   [shire]
-   submodule = "extensions/shire"
+   [shire-theme]
+   submodule = "extensions/shire-theme"
    version = "0.1.0"
    ```
 
 3. Open a PR. After merge, **Shire** shows up in **zed: extensions** for everyone.
+   Keep `LICENSE` at the extension root — CI rejects submissions without an accepted
+   license, and this one is MIT.
+
+Before submitting, test the theme from a clean checkout at the exact commit you push,
+and keep `THIRD_PARTY_NOTICES.md` with the repo: the palette is derived from
+OpenChamber's MIT-licensed theme, and MIT requires its copyright and permission
+notice to travel with substantial portions of the work.
 
 ## How the OpenChamber palette maps to Zed
 
@@ -182,4 +192,10 @@ Colors are plain hex; the `#RRGGBBAA` form is used only for overlays
 
 ## License
 
-MIT — see [LICENSE](LICENSE). Palette derived from OpenChamber's Fields of the Shire theme.
+This project is MIT — see [LICENSE](LICENSE).
+
+The palette is adapted from OpenChamber's **Fields of the Shire** theme, which is
+MIT-licensed (© 2025 Bohdan Triapitsyn). That copyright and permission notice is
+reproduced in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md), as MIT requires for
+substantial portions of a work. The name "Fields of the Shire" is used descriptively
+to credit the source; this project is not affiliated with OpenChamber.
