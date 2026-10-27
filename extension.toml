@@ -1,0 +1,9 @@
+id = "shire"
+name = "Shire"
+description = "Shire — a warm, earthy dark theme inspired by Fields of the Shire."
+version = "0.1.0"
+schema_version = 1
+authors = ["Valery Murashko"]
+repository = "https://github.com/Emestie/zed-shire-theme"
+
+[grammars]
