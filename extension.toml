@@ -1,7 +1,7 @@
 id = "shire-theme"
 name = "Shire"
 description = "Shire — warm, earthy dark and light themes for Zed, inspired by Fields of the Shire."
-version = "0.1.0"
+version = "1.0.0"
 schema_version = 1
 authors = ["Valery Murashko"]
 repository = "https://github.com/Emestie/zed-shire-theme"

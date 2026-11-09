@@ -19,6 +19,7 @@ shire/
 ├── scripts/check-theme.ps1 # JSON + hex-color sanity check
 ├── LICENSE                 # MIT, for this project's code and theme JSON
 ├── THIRD_PARTY_NOTICES.md  # OpenChamber MIT notice for the derived palette
+├── RELEASING.md            # registry submission checklist and PR text
 └── README.md
 ```
 
@@ -137,7 +138,7 @@ A third variant (for example a blurred "Shire Soft") is just another object in t
    ```toml
    [shire-theme]
    submodule = "extensions/shire-theme"
-   version = "0.1.0"
+   version = "1.0.0"
    ```
 
 3. Open a PR. After merge, **Shire** shows up in **zed: extensions** for everyone.
@@ -148,6 +149,9 @@ Before submitting, test the theme from a clean checkout at the exact commit you 
 and keep `THIRD_PARTY_NOTICES.md` with the repo: the palette is derived from
 OpenChamber's MIT-licensed theme, and MIT requires its copyright and permission
 notice to travel with substantial portions of the work.
+
+The full checklist, the exact `extensions.toml` patch and a ready-to-paste PR body
+live in [RELEASING.md](RELEASING.md).
 
 ## How the OpenChamber palette maps to Zed
 
