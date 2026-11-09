@@ -188,6 +188,10 @@ Colors are plain hex; the `#RRGGBBAA` form is used only for overlays
   (dark `#809062`, light `#4a6030`).
 - Comment legibility: `syntax.comment` is intentionally low contrast — `#6a5e52` on dark,
   `#8a7e72` on light; raise toward `#7d6f60` / `#7a6e62` if it fades.
+- AI ghost text (edit predictions) uses `predictive`: `#535d64` on dark and `#9aa3a8` on
+  light, both ~2.5:1 against the editor background so they read as shadow text rather
+  than code. `syntax.predictive` is kept in sync; `#RRGGBBAA` is allowed if you want it
+  even fainter.
 - Re-run `scripts/check-theme.ps1` after any edit, then rebuild the dev extension.
 
 ## License
