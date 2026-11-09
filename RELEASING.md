@@ -99,7 +99,7 @@ terminal colors and the git panel.
 
 ## Releasing an update
 
-1. Bump `version` in `extension.toml` and `Cargo.toml`, commit, push.
+1. Bump `version` in `extension.toml`, commit, push.
 2. Open a PR against `zed-industries/extensions`:
    ```sh
    git submodule update --remote extensions/shire-theme

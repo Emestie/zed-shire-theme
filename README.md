@@ -13,8 +13,6 @@ dark side, warm paper and forest green on the light side.
 ```
 shire/
 ├── extension.toml          # Zed extension manifest
-├── Cargo.toml              # Rust crate (theme extensions are wasm crates)
-├── src/shire.rs            # no-op Extension impl
 ├── themes/shire.json       # ← the theme itself: one family, dark + light
 ├── scripts/check-theme.ps1 # JSON + hex-color sanity check
 ├── LICENSE                 # MIT, for this project's code and theme JSON
@@ -24,18 +22,20 @@ shire/
 ```
 
 `themes/shire.json` is the only file that matters for the look. Everything else
-exists so Zed can install it as an extension.
+exists so Zed can install it as an extension. The extension is asset-only — there is
+no Rust crate, so Zed has nothing to compile and installation is instant.
 
 ## Prerequisites
 
 | Path | Needs |
 | --- | --- |
 | **A — drop-in file** | only Zed |
-| **B — extension** | Zed + Rust toolchain (`rustup`, `cargo`) |
+| **B — dev extension** | only Zed |
 
-This machine has no `cargo`/`rustup` on `PATH`, so **Path A works out of the box**
-and Path B needs one install step first: `winget install Rustlang.Rustup`, then open
-a new terminal.
+No Rust toolchain is involved: the extension ships only theme JSON, so Zed compiles
+nothing. If you later add Rust code, install Rust via rustup (Zed adds the
+`wasm32-wasip2` target itself), and on Windows also the MSVC build tools — `rustc`
+needs `link.exe` for build scripts even when the final artifact is wasm.
 
 ## Check the theme file
 
@@ -83,29 +83,19 @@ Editing the copy in `themes/` afterwards means re-copying it and restarting Zed.
 ## Path B — install it as a dev extension (recommended)
 
 This is how you develop the theme with live rebuilds, and the shape the registry expects.
+There is no Rust crate in this repo, so no toolchain is needed.
 
-1. Install Rust once (if missing):
+1. In Zed: `ctrl-shift-p` → **zed: install dev extension** → select this folder
+   (`C:\Users\valery.murashko\dev2\shire`). Zed reads `themes/shire.json` directly;
+   there is no compile step, so the install finishes immediately.
 
-   ```pwsh
-   winget install Rustlang.Rustup
-   rustup target add wasm32-wasip1   # new terminal after install
-   ```
-
-2. In Zed: `ctrl-shift-p` → **zed: install dev extension** → select this folder
-   (`C:\Users\valery.murashko\dev2\shire`). Zed compiles the crate to wasm itself;
-   the first build takes ~1 minute.
-
-3. `ctrl-shift-p` → **theme selector: toggle** → **Shire Dark** or **Shire Light**.
+2. `ctrl-shift-p` → **theme selector: toggle** → **Shire Dark** or **Shire Light**.
 
 After editing `themes/shire.json`, run `ctrl-shift-p` → **zed: rebuild dev extensions**
 (no full restart needed). Uninstall the same way: **zed: extensions** → Shire → Uninstall.
 
-The dev extension is installed from the working tree, so no `cargo build` or copying
-is required — Zed does both. To build by hand anyway:
-
-```pwsh
-cargo build --release --target wasm32-wasip1
-```
+If installation fails, `ctrl-shift-p` → **zed: open log** shows why; relaunching Zed from
+a terminal with `zed --foreground` prints more.
 
 ## Variants
 
